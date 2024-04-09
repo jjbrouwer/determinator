@@ -2,18 +2,19 @@
 Console.WriteLine("The Sorting Hat will place you into your rightful house.");
 Console.WriteLine("The Sorting Hat's decision is final...");
 Console.WriteLine("Start the sorting ceremony...");
-Console.WriteLine("What is your name?");
 
-var input = Console.ReadLine() ?? "";
-var code = Determinator.Determinator.GetSimpleHashCode(input, 4);
+while (true)
+{
+    Console.WriteLine("What is your name?");
 
-Console.WriteLine($"You belong to.... {GetHouse(code)}!");
+    var input = Console.ReadLine() ?? "";
 
-static string GetHouse(short code) =>
-    code switch
-    {
-        1 => "Ravenclaw",
-        2 => "Hufflepuff",
-        3 => "Slytherin",
-        _ => "Gryffindor",
-    };
+    if (input == "") break;
+
+    var options = new [] { "Hufflepuff", "Ravenclaw", "Slytherin", "Gryffindor" };
+    var code = Determinator.Determinator.GetSimpleHashCode(input, options.Length);
+    var value = options[code];
+
+    Console.WriteLine($"You belong to.... {value}!");
+    Console.WriteLine();
+}

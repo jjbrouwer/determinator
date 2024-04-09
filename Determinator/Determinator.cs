@@ -3,10 +3,10 @@ using System;
 
 internal static class Determinator
 {
-    internal static short GetSimpleHashCode(string input, short maxValue)
+    internal static int GetSimpleHashCode(string input, int maxValue)
     {
         var hashCode = Math.Abs(GetDeterministicHashCode(input));
-        return (short)(hashCode % maxValue);
+        return hashCode % maxValue;
     }
 
     private static int GetDeterministicHashCode(string input)
